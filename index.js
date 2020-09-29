@@ -16,6 +16,7 @@ app.engine('handlebars', exphbs({
 }));
 
 
+
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
@@ -23,6 +24,11 @@ app.use(bodyParser.urlencoded({ extended: false })); // add this line
 app.use(bodyParser.json()); // add  this line
 
 
+app.get('/', function (req, res) {
+
+     res.render('index') 
+    
+ });
 
 
 
