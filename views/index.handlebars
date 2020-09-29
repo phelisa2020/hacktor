@@ -10,49 +10,50 @@
 
 <body>
 	<div class="container">
-		 <form action="/budget" method="POST">
-		<h1><u>BUDGETING STUDENT</u></h1>
-		
-	
-		Your budget! <input type="text" name="nameValue"  class="amount" placeholder="">
-		<br><br>
-	
+		<form action="/budget" method="POST">
+			<h1><u>BUDGETING STUDENT</u></h1>
 
-	<div class='Essentials'>
-		<h2>ESSENTIALS</h2>
-		<ul>
-			<li>Rent <input type="text" name="nameValue"  class="rent" placeholder=""></li>
-		<li>Food <input type="text" name="nameValue"  class="food" placeholder=""></li>
-		<li>Transport <input type="text" name="nameValue"  class="transport" placeholder=""></li>	
-			</ul>
+
+			Your budget! <input type="text" name="nameValue" class="amount" placeholder="">
+			<br><br>
+
+
+			<div class='Essentials'>
+				<h2>ESSENTIALS</h2>
+				<ul>
+					<li>Rent <input type="text" name="nameValue" class="rent" placeholder=""></li>
+					<li>Food <input type="text" name="nameValue" class="food" placeholder=""></li>
+					<li>Transport <input type="text" name="nameValue" class="transport" placeholder=""></li>
+				</ul>
+			</div>
+
+			<div class='Non-Essentials'>
+				<h2>NON-ASSENTIALS</h2>
+				<ul>
+
+					<li><input type="text" name="nameValue" class="rent" placeholder=""></li>
+					<li><input type="text" name="nameValue" class="food" placeholder=""></li>
+					<li><input type="text" name="nameValue" class="transport" placeholder=""> </li>
+				</ul>
+			</div>
+
+			<div class="total">
+				<strong>Total amount:</strong>
+				<span class="total ">R<span class="budgetTotal">0.00</span> </span>
+			</div>
+			<div class='btn'>
+
+				<input type='submit' class='btn' placeholder="submit"> <a href="" a>
+
+			</div>
+
+
+
+
+		</form>
+
 	</div>
 
-	<div class='Non-Essentials'>
-		<h2>NON-ASSENTIALS</h2>
-		<ul>
-			
-		 <li><input type="text" name="nameValue"  class="rent" placeholder=""></li>
-		 <li><input type="text" name="nameValue"  class="food" placeholder=""></li>
-	 <li><input type="text" name="nameValue"  class="transport" placeholder="">	</li>
-			</ul>
-	</div>
-
-	<div class="total">
-              <strong>Total amount:</strong>
-              <span class="total ">R<span class="budgetTotal">0.00</span> </span>
-            </div>
-		<div class = 'btn'>
-
-			<input type = 'submit' class= 'btn' placeholder="submit" >	<a href=""a>
-
-		</div>
-
-			
-			
-			 
-				</form>
-				
-	</div>
-	
 </body>
+
 </html>
