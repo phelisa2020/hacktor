@@ -1,20 +1,19 @@
 module.exports = function budget() {
 
-    let rentCost;
-    let transportCost;
-    let groceryCost;
-
-    let budgetAmount;
-
     let expenseList = [];
+    let expenseCost;
 
 
-    function setExpenses(settings) {
-        rentCost = Number(settings.rentCost);
-        transportCost = Number(settings.transportCost);
-        groceryCost = Number(settings.groceryCost);
-        budgetAmount = Number(settings.budgetAmount);
+    function setExpenses(expense) {
+        if (expenseList[expense] === undefined) {
+            expenseList[expense] = 0
+        }
+        expenseList[expense] += 1
+       
+    }
 
+    function setExpenseCost(setCost) {
+        expenseCost = Number(setCost.expenseCost);
 
 
     }
@@ -22,75 +21,40 @@ module.exports = function budget() {
 
     function getExpenses() {
         return {
-            rentCost,
-            transportCost,
-            groceryCost,
-            // budgetAmount
+            expenseList
+            
+        }
+
+
+    }
+
+    function getCost() {
+        return {
+            expenseCost
         }
 
     }
 
-    function makeChanges (additions){
+    function totals(expenseAmount) {
         let cost = 0;
 
-        if (additions === "rent") {
-            cost = rentCost
+        if (expenseAmount === Number) {
 
+
+            
         }
-        if (additions === "transport") {
-            cost = transportCost
-        }
-
-        else if (additions === "grocery") {
-            cost = groceryCost
-        }
-
-        expenseList.push({
-            variety: additions,
-            cost,
-
-        });
-
-        
     }
- 
-        function changes (){
-            return expenseList
-        }
 
-        function getTotal(variety) {
-            return expenseList.reduce((total, additions) => {
-                let val = additions.variety === variety ? additions.cost : 0;
-                return total + val;
-            }, 0);
-        }
-    
-        function totalExpenses() {
-            return getTotal('rentCost') + getTotal('transportCost') + getTotal('groceryCost');
-        }
 
-        function totals(){
-            let rentTotal = getTotal('rentCost').toFixed(2);
-            let transportTotal = getTotal('transportCost').toFixed(2);
-            let groceryTotal = getTotal('groceryCost').toFixed(2);
-            return {
-                rentTotal,
-                transportTotal,
-                groceryTotal,
-                totalExpenses: totalExpenses().toFixed(2)
-            }
 
-        }
-
-return {
-    setExpenses,
-    getExpenses,
-    makeChanges,
-    changes,
-    getTotal,
-    totalExpenses,
-    totals
-}
+    return {
+        setExpenses,
+        getExpenses,
+        getCost,
+        setExpenseCost,
+       
+        totals
+    }
 
 
 

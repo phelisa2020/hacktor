@@ -18,14 +18,14 @@
 
 			<hr>
 
-			Your budget! <input required type="number" name="budgetAmount" value="{{settings.budgetAmount}}"
+			{{!-- Your budget! <input required type="number" name="budgetAmount" value="{{settings.budgetAmount}}"
 				placeholder="enter your budget">
-			<br><br>
+			<br><br> --}}
 
 			<div class="row">
 
 				<div class="six columns box">
-					 <h2>EXPENSES</h2>
+					<h2>EXPENSES</h2>
 					{{!-- <ul>
 						<li>Rent <input class="u-full-width rentSetting" required type="number" name="rentCost"
 								placeholder="" value="{{settings.rentCost}}"></li>
@@ -51,16 +51,24 @@
 <br>
 					<strong>Total non-essentials:</strong>
 					<span class="total ">R<span class="budgetTotal">0.00</span> </span> --}}
-					<li><input type="text" name="nameValue" class="rent" placeholder=""></li>
+					<li><input type="text" name="expenseName" class="rent" placeholder=""></li>
 
 
-					<input class="u-full-width rentSetting" required type="number" name="rentCost" placeholder=""
+					<input class="u-full-width rentSetting" required type="number" name="cost" placeholder=""
 						value="{{settings.rentCost}}"></li>
+					<br>
+					<button class="button-primary" type="submit" name="button">Add</button>
 
 					<hr>
 
+					<ul>    
+                        {{#each budget.items}}
+                        <li> {{name}} : {{cost}} </li>
+                        {{/each}}
+                    </ul>
+
 					<strong>Total expenses:</strong>
-					<span class="total ">R<span class="budgetTotal">0.00</span> </span>
+					<span class="total ">R<span class="budgetTotal">{{budget.total}}</span> </span>
 
 
 
