@@ -18,28 +18,29 @@
 
 			<hr>
 
-			Your budget! <input required type="number" name="nameValue" value="" placeholder="enter your budget">
+			Your budget! <input required type="number" name="budgetAmount" value="{{settings.budgetAmount}}"
+				placeholder="enter your budget">
 			<br><br>
 
 			<div class="row">
 
 				<div class="six columns box">
-					<h2>ESSENTIALS</h2>
-					<ul>
-						<li>Rent <input class="u-full-width rentSetting" required type="number" name="rent"
-								placeholder="" value=""></li>
-						<li>Food <input class="u-full-width foodSetting" required type="number" name="food"
-								placeholder="" value=""></li>
+					 <h2>EXPENSES</h2>
+					{{!-- <ul>
+						<li>Rent <input class="u-full-width rentSetting" required type="number" name="rentCost"
+								placeholder="" value="{{settings.rentCost}}"></li>
+						<li>Food <input class="u-full-width foodSetting" required type="number" name="groceryCost"
+								placeholder="" value="{{settings.groceryCost}}"></li>
 						<li>Transport <input class="u-full-width transportSetting" required type="number"
-								name="transport" placeholder="" value=""></li>
+								name="transportCost" placeholder="" value="{{settings.transportCost}}"></li>
 					</ul>
-					<button class="button-primary" type="submit" name="button">Add</button>
-<br>
-					<strong>Total essentials:</strong>
-					<span class="total ">R<span class="budgetTotal">0.00</span> </span>
+					<button class="button-primary" type="submit" name="button">Add</button> --}}
+					<br>
+					{{!-- <strong>Total essentials:</strong>
+					<span class="total ">R<span class="budgetTotal">{{totals.totalExpenses}}</span> </span> --}}
 
 
-					<h2>NON-ESSENTIALS</h2>
+					{{!-- <h2>NON-ESSENTIALS</h2>
 					<ul>
 
 						<li><input type="text" name="nameValue" class="rent" placeholder=""></li>
@@ -49,7 +50,12 @@
 					<button class="button-primary" type="submit" name="button">Add</button>
 <br>
 					<strong>Total non-essentials:</strong>
-					<span class="total ">R<span class="budgetTotal">0.00</span> </span>
+					<span class="total ">R<span class="budgetTotal">0.00</span> </span> --}}
+					<li><input type="text" name="nameValue" class="rent" placeholder=""></li>
+
+
+					<input class="u-full-width rentSetting" required type="number" name="rentCost" placeholder=""
+						value="{{settings.rentCost}}"></li>
 
 					<hr>
 

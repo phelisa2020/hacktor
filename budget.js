@@ -25,7 +25,7 @@ module.exports = function budget() {
             rentCost,
             transportCost,
             groceryCost,
-            budgetAmount
+            // budgetAmount
         }
 
     }
@@ -66,17 +66,18 @@ module.exports = function budget() {
         }
     
         function totalExpenses() {
-            return getTotal('rent') + getTotal('transport') + getTotal('grocery');
+            return getTotal('rentCost') + getTotal('transportCost') + getTotal('groceryCost');
         }
 
         function totals(){
-            let rentTotal = getTotal('rent').toFixed(2);
-            let transportTotal = getTotal('transport').toFixed(2);
-            let groceryTotal = getTotal('grocery').toFixed(2);
+            let rentTotal = getTotal('rentCost').toFixed(2);
+            let transportTotal = getTotal('transportCost').toFixed(2);
+            let groceryTotal = getTotal('groceryCost').toFixed(2);
             return {
                 rentTotal,
                 transportTotal,
-                groceryTotal
+                groceryTotal,
+                totalExpenses: totalExpenses().toFixed(2)
             }
 
         }

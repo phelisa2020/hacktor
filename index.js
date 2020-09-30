@@ -30,7 +30,7 @@ app.use(bodyParser.json()); // add  this line
 
 app.get('/', function (req, res) {
 
-     res.render('index', {
+	res.render('index', {
 
 		budget: budgetting.getExpenses(),
 		totals: budgetting.totals(),
@@ -38,11 +38,28 @@ app.get('/', function (req, res) {
 
 
 
-	 });
-    
- });
+	});
 
 
+});
+
+app.post('/budget', function (req, res) {
+
+	budgetting.setExpenses({
+
+		rentCost: req.body.rentCost,
+		groceryCost: req.body.groceryCost,
+		transportCost: req.body.transportCost,
+
+
+	});
+
+	console.log(budgetting.totalExpenses());
+
+	res.redirect('/');
+
+
+});
 
 
 
@@ -61,6 +78,6 @@ app.get('/', function (req, res) {
 
 
 const PORT = process.env.PORT || 3025;
-app.listen(PORT, function(){
+app.listen(PORT, function () {
 	console.log('App started at port:', PORT);
 })
