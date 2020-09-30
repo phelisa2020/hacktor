@@ -1,32 +1,22 @@
-{{!-- <!DOCTYPE html>
-<html>
-
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" href="css/budget.css">
-</head>
-
-<body> --}}
 <title>BUDGET</title>
 
 <div class="row">
 
-	<div class="twelve columns box">
-		<form action="/budget" method="POST">
-			<h1>BUDGETING STUDENT</h1>
+    <div class="twelve columns box">
+        <form action="/budget" method="POST">
+            <h1>BUDGETING STUDENT</h1>
 
-			<hr>
+            <hr>
 
-			{{!-- Your budget! <input required type="number" name="budgetAmount" value="{{settings.budgetAmount}}"
+            {{!-- Your budget! <input required type="number" name="budgetAmount" value="{{settings.budgetAmount}}"
 				placeholder="enter your budget">
 			<br><br> --}}
 
-			<div class="row">
+            <div class="row">
 
-				<div class="six columns box">
-					<h2>EXPENSES</h2>
-					{{!-- <ul>
+                <div class="six columns box">
+                    <h2>EXPENSES</h2>
+                    {{!-- <ul>
 						<li>Rent <input class="u-full-width rentSetting" required type="number" name="rentCost"
 								placeholder="" value="{{settings.rentCost}}"></li>
 						<li>Food <input class="u-full-width foodSetting" required type="number" name="groceryCost"
@@ -35,12 +25,12 @@
 								name="transportCost" placeholder="" value="{{settings.transportCost}}"></li>
 					</ul>
 					<button class="button-primary" type="submit" name="button">Add</button> --}}
-					<br>
-					{{!-- <strong>Total essentials:</strong>
+                    <br>
+                    {{!-- <strong>Total essentials:</strong>
 					<span class="total ">R<span class="budgetTotal">{{totals.totalExpenses}}</span> </span> --}}
 
 
-					{{!-- <h2>NON-ESSENTIALS</h2>
+                    {{!-- <h2>NON-ESSENTIALS</h2>
 					<ul>
 
 						<li><input type="text" name="nameValue" class="rent" placeholder=""></li>
@@ -51,42 +41,37 @@
 <br>
 					<strong>Total non-essentials:</strong>
 					<span class="total ">R<span class="budgetTotal">0.00</span> </span> --}}
-					<li><input type="text" name="expenseName" class="rent" placeholder=""></li>
+                    <li><input type="text" name="expense_name" class="" placeholder=""></li>
 
 
-					<input class="u-full-width rentSetting" required type="number" name="cost" placeholder=""
-						value="{{settings.rentCost}}"></li>
-					<br>
-					<button class="button-primary" type="submit" name="button">Add</button>
+                    <input class="u-full-width rentSetting" required type="number" name="cost" placeholder=""
+                        value="{{settings.rentCost}}"></li>
+                    <br>
+                    <button class="button-primary" type="submit" name="button">Add</button>
 
-					<hr>
+                        <hr>
 
-					<ul>    
+                    <ul>    
                         {{#each budget.items}}
                         <li> {{name}} : {{cost}} </li>
                         {{/each}}
                     </ul>
 
-					<strong>Total expenses:</strong>
-					<span class="total ">R<span class="budgetTotal">{{budget.total}}</span> </span>
+
+                    <strong>Total expenses:</strong>
+                    <span class="total ">R<span class="budgetTotal">{{budget.total}}</span> </span>
 
 
 
-					<hr>
+                    <hr>
 
-					<button class="button-primary" type='submit' name="button">Proceed</button>
+                    <button class="button-primary" type='submit' name="button">Proceed</button>
 
 
 
-		</form>
+        </form>
 
-	</div>
+    </div>
 </div>
 </div>
 </div>
-
-
-
-{{!-- </body>
-
-</html> --}}

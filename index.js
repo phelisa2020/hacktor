@@ -6,9 +6,9 @@ const app = express();
 
 const bodyParser = require('body-parser');
 
-const budget = require('./budget');
+// const budget = require('./budget');
 
-const budgetting = budget();
+// const budgetting = budget();
 
 
 
@@ -21,6 +21,34 @@ app.engine('handlebars', exphbs({
 
 
 
+function BudgetService () {
+
+	const budget = {
+		income : 0,
+		available : 0,
+		items : [],
+		total : 0
+	}
+
+	//
+	function addExpense(expense) {
+		budget.total += budgetItem.cost;
+		budget.items.push(budgetItem);
+	}
+
+	function getBudget(id) {
+		return budget
+	}
+
+	return {
+		addExpense,
+		getBudget,
+		BudgetService
+	}
+
+}
+
+
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
@@ -31,32 +59,34 @@ app.use(bodyParser.json()); // add  this line
 app.get('/', function (req, res) {
 
 	res.render('index', {
-
-		budget: budgetting.getExpenses(),
-		totals: budgetting.totals(),
-
-
-
-
+		budget
 	});
 
 
 });
 
+
 app.post('/budget', function (req, res) {
 
-	budgetting.setExpenses({
 
-		rentCost: req.body.rentCost,
-		groceryCost: req.body.groceryCost,
-		transportCost: req.body.transportCost,
+	console.log(req.body);
+
+	const budgetItem = {
+		name : req.body.expenseName,
+		cost : Number(req.body.cost)
+	};
+
+	
 
 
-	});
+	// budgetting.setExpenses(expense)
+		// rentCost: req.body.rentCost,
+		// groceryCost: req.body.groceryCost,
+		// transportCost: req.body.transportCost,
 
-	console.log(budgetting.totalExpenses());
+	// console.log(budgetting.getExpenses());
 
-	res.redirect('/');
+	res.redirect("/")
 
 
 });
