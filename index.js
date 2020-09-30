@@ -10,30 +10,27 @@ const bodyParser = require('body-parser');
 
 // const budgetting = budget();
 
-
-
-
 app.engine('handlebars', exphbs({
 	layoutsDir: './views/layouts'
-
-
 }));
 
 
 
-function BudgetService () {
+function BudgetService (income) {
 
 	const budget = {
-		income : 0,
+		income,
 		available : 0,
 		items : [],
+		amountLeft : income,
 		total : 0
 	}
 
 	//
 	function addExpense(expense) {
-		budget.total += budgetItem.cost;
-		budget.items.push(budgetItem);
+		budget.total += expense.cost;
+		budget.amountLeft -= expense.cost;
+		budget.items.push(expense);
 	}
 
 	function getBudget(id) {
@@ -43,7 +40,6 @@ function BudgetService () {
 	return {
 		addExpense,
 		getBudget,
-		BudgetService
 	}
 
 }
@@ -56,10 +52,12 @@ app.use(bodyParser.urlencoded({ extended: false })); // add this line
 app.use(bodyParser.json()); // add  this line
 
 
+const budgetService = BudgetService(3500);
+
 app.get('/', function (req, res) {
 
 	res.render('index', {
-		budget
+		budget: budgetService.getBudget()
 	});
 
 
@@ -76,7 +74,7 @@ app.post('/budget', function (req, res) {
 		cost : Number(req.body.cost)
 	};
 
-	
+	budgetService.addExpense(budgetItem);
 
 
 	// budgetting.setExpenses(expense)
