@@ -6,6 +6,10 @@ const app = express();
 
 const bodyParser = require('body-parser');
 
+const budget = require('./budget');
+
+const budgetting = budget();
+
 
 
 
@@ -26,7 +30,15 @@ app.use(bodyParser.json()); // add  this line
 
 app.get('/', function (req, res) {
 
-     res.render('index') 
+     res.render('index', {
+
+		budget: budgetting.getExpenses(),
+		totals: budgetting.totals(),
+
+
+
+
+	 });
     
  });
 

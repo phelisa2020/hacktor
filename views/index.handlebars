@@ -1,59 +1,78 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html>
 
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>BUDGET</title>
 	<link rel="stylesheet" href="css/budget.css">
 </head>
 
-<body>
-	<div class="container">
+<body> --}}
+<title>BUDGET</title>
+
+<div class="row">
+
+	<div class="twelve columns box">
 		<form action="/budget" method="POST">
-			<h1><u>BUDGETING STUDENT</u></h1>
+			<h1>BUDGETING STUDENT</h1>
 
+			<hr>
 
-			Your budget! <input type="text" name="nameValue" class="amount" placeholder="">
+			Your budget! <input required type="number" name="nameValue" value="" placeholder="enter your budget">
 			<br><br>
 
+			<div class="row">
 
-			<div class='Essentials'>
-				<h2>ESSENTIALS</h2>
-				<ul>
-					<li>Rent <input type="text" name="nameValue" class="rent" placeholder=""></li>
-					<li>Food <input type="text" name="nameValue" class="food" placeholder=""></li>
-					<li>Transport <input type="text" name="nameValue" class="transport" placeholder=""></li>
-				</ul>
-			</div>
+				<div class="six columns box">
+					<h2>ESSENTIALS</h2>
+					<ul>
+						<li>Rent <input class="u-full-width rentSetting" required type="number" name="rent"
+								placeholder="" value=""></li>
+						<li>Food <input class="u-full-width foodSetting" required type="number" name="food"
+								placeholder="" value=""></li>
+						<li>Transport <input class="u-full-width transportSetting" required type="number"
+								name="transport" placeholder="" value=""></li>
+					</ul>
+					<button class="button-primary" type="submit" name="button">Add</button>
+<br>
+					<strong>Total essentials:</strong>
+					<span class="total ">R<span class="budgetTotal">0.00</span> </span>
 
-			<div class='Non-Essentials'>
-				<h2>NON-ASSENTIALS</h2>
-				<ul>
 
-					<li><input type="text" name="nameValue" class="rent" placeholder=""></li>
-					<li><input type="text" name="nameValue" class="food" placeholder=""></li>
-					<li><input type="text" name="nameValue" class="transport" placeholder=""> </li>
-				</ul>
-			</div>
+					<h2>NON-ESSENTIALS</h2>
+					<ul>
 
-			<div class="total">
-				<strong>Total amount:</strong>
-				<span class="total ">R<span class="budgetTotal">0.00</span> </span>
-			</div>
-			<div class='btn'>
+						<li><input type="text" name="nameValue" class="rent" placeholder=""></li>
+						<li><input type="text" name="nameValue" class="food" placeholder=""></li>
+						<li><input type="text" name="nameValue" class="transport" placeholder=""> </li>
+					</ul>
+					<button class="button-primary" type="submit" name="button">Add</button>
+<br>
+					<strong>Total non-essentials:</strong>
+					<span class="total ">R<span class="budgetTotal">0.00</span> </span>
 
-				<input type='submit' class='btn' placeholder="submit"> <a href="" a>
+					<hr>
 
-			</div>
+					<strong>Total expenses:</strong>
+					<span class="total ">R<span class="budgetTotal">0.00</span> </span>
 
+
+
+					<hr>
+
+					<button class="button-primary" type='submit' name="button">Proceed</button>
 
 
 
 		</form>
 
 	</div>
+</div>
+</div>
+</div>
 
-</body>
 
-</html>
+
+{{!-- </body>
+
+</html> --}}
