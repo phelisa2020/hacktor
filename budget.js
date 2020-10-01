@@ -19,6 +19,12 @@ module.exports = function BudgetService(income) {
 		return budget
 	}
 
+    function setIncome(income) {
+        budget.income = Number(income);
+        budget.amountLeft = budget.income;
+
+    }
+
 	function getList() {
 		var labels = []
 		for (const item of budget.items) {

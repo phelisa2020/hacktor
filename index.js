@@ -7,8 +7,7 @@ const app = express();
 const bodyParser = require('body-parser');
 
 const BudgetService = require('./budget');
-const budgetService = BudgetService();
-
+const budgetService = BudgetService(3000);
 
 app.engine('handlebars', exphbs({
 	layoutsDir: './views/layouts'
@@ -21,9 +20,9 @@ app.use(bodyParser.urlencoded({ extended: false })); // add this line
 app.use(bodyParser.json()); // add  this line
 
 
-app.get('/', function (req, res) {
+app.get('/budget', function (req, res) {
 
-	const budget = budgetService.getBudget(3000);
+	const budget = budgetService.getBudget();
 	// console.log(budget);
 	let data = budgetService.getData()
 	let labels = budgetService.getList()
@@ -31,8 +30,12 @@ app.get('/', function (req, res) {
 	let dataStr = JSON.stringify(data)
 	let labelStr = JSON.stringify(labels) 
 	
+	// const budgetService = budgetService.getBudget(3000);
+
+	console.log(budget);
+
 	res.render('index', {
-		budget: budgetService.getBudget(3000),
+		budget,
 		data : dataStr,
 		labels : labelStr
 	});
@@ -53,7 +56,7 @@ app.post('/budget', function (req, res) {
 	budgetService.addExpense(budgetItem);
 
 
-	res.redirect("/")
+	res.redirect("/budget")
 
 });
 
