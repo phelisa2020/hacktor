@@ -6,44 +6,13 @@ const app = express();
 
 const bodyParser = require('body-parser');
 
-// const budget = require('./budget');
+const BudgetService = require('./budget');
+const budgetService = BudgetService();
 
-// const budgetting = budget();
 
 app.engine('handlebars', exphbs({
 	layoutsDir: './views/layouts'
 }));
-
-
-
-function BudgetService (income) {
-
-	const budget = {
-		income,
-		available : 0,
-		items : [],
-		amountLeft : income,
-		total : 0
-	}
-
-	//
-	function addExpense(expense) {
-		budget.total += expense.cost;
-		budget.amountLeft -= expense.cost;
-		budget.items.push(expense);
-	}
-
-	function getBudget(id) {
-		return budget
-	}
-
-	return {
-		addExpense,
-		getBudget,
-	}
-
-}
-
 
 app.set('view engine', 'handlebars');
 
@@ -52,17 +21,24 @@ app.use(bodyParser.urlencoded({ extended: false })); // add this line
 app.use(bodyParser.json()); // add  this line
 
 
-const budgetService = BudgetService(3500);
-
 app.get('/', function (req, res) {
 
+	const budget = budgetService.getBudget(3000);
+	// console.log(budget);
+	let data = budgetService.getData()
+	let labels = budgetService.getList()
+	
+	let dataStr = JSON.stringify(data)
+	let labelStr = JSON.stringify(labels) 
+	
 	res.render('index', {
-		budget: budgetService.getBudget()
+		budget: budgetService.getBudget(3000),
+		data : dataStr,
+		labels : labelStr
 	});
 
 
 });
-
 
 app.post('/budget', function (req, res) {
 
@@ -77,32 +53,9 @@ app.post('/budget', function (req, res) {
 	budgetService.addExpense(budgetItem);
 
 
-	// budgetting.setExpenses(expense)
-		// rentCost: req.body.rentCost,
-		// groceryCost: req.body.groceryCost,
-		// transportCost: req.body.transportCost,
-
-	// console.log(budgetting.getExpenses());
-
 	res.redirect("/")
 
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 const PORT = process.env.PORT || 3025;

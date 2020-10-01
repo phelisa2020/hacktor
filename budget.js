@@ -1,64 +1,52 @@
-module.exports = function budget() {
+module.exports = function BudgetService(income) {
 
-    let expenseList = [];
-    let expenseCost;
-
-
-    function setExpenses(expense) {
-        if (expenseList[expense] === undefined) {
-            expenseList[expense] = 0
-        }
-        expenseList[expense] += 1
-       
-    }
-
-    function setExpenseCost(setCost) {
-        expenseCost = Number(setCost.expenseCost);
+	const budget = {
+		income,
+		available: 0,
+		items: [],
+		amountLeft: income,
+		total: 0
+	}
 
 
-    }
+	function addExpense(expense) {
+		budget.total += expense.cost;
+		budget.amountLeft -= expense.cost;
+		budget.items.push(expense);
+	}
 
+	function getBudget(id) {
+		return budget
+	}
 
-    function getExpenses() {
-        return {
-            expenseList
-            
-        }
+	function getList() {
+		var labels = []
+		for (const item of budget.items) {
+			labels.push(item.name)
+		}
+		return labels
+	}
 
+	function getData() {
+		var datas = []
+		for (const item of budget.items) {
+			datas.push(item.cost);
+		}
+		return datas
+	}
 
-    }
+	return {
+		addExpense,
+		getBudget,
+		getList,
+		getData
 
-    function getCost() {
-        return {
-            expenseCost
-        }
-
-    }
-
-    function totals(expenseAmount) {
-        let cost = 0;
-
-        if (expenseAmount === Number) {
-
-
-            
-        }
-    }
-
-
-
-    return {
-        setExpenses,
-        getExpenses,
-        getCost,
-        setExpenseCost,
-       
-        totals
-    }
-
-
+	}
 
 }
+
+
+
 
 
 
